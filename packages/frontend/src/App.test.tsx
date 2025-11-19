@@ -18,7 +18,23 @@ describe('App', () => {
       </Provider>
     );
 
-    expect(screen.getByText(/Product Timeline Web Application/i)).toBeInTheDocument();
+    expect(screen.getByText(/Welcome to Product Timeline/i)).toBeInTheDocument();
     expect(screen.getByText(/Transform project documentation/i)).toBeInTheDocument();
+  });
+
+  it('renders header with app title', () => {
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
+        </BrowserRouter>
+      </Provider>
+    );
+
+    // Check for header element specifically
+    const header = screen.getByRole('banner');
+    expect(header).toBeInTheDocument();
   });
 });
