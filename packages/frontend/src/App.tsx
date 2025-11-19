@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { Box, Typography, Paper } from '@mui/material';
 import { MainLayout } from './components/layout';
+import { ProjectList } from './components/projects';
+import { TimelineContainer } from './components/timeline/TimelineContainer';
 
 function App() {
   return (
@@ -8,7 +10,7 @@ function App() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
         <Route path="projects" element={<ProjectsPage />} />
-        <Route path="timeline" element={<TimelinePage />} />
+        <Route path="timeline/:projectId" element={<TimelinePage />} />
         <Route path="search" element={<SearchPage />} />
         <Route path="metrics" element={<MetricsPage />} />
         <Route path="export" element={<ExportPage />} />
@@ -44,29 +46,11 @@ function HomePage() {
 }
 
 function ProjectsPage() {
-  return (
-    <Box>
-      <Typography variant="h4" gutterBottom>
-        Projects
-      </Typography>
-      <Typography variant="body1" color="text.secondary">
-        Project list will be implemented in Phase 2
-      </Typography>
-    </Box>
-  );
+  return <ProjectList />;
 }
 
 function TimelinePage() {
-  return (
-    <Box>
-      <Typography variant="h4" gutterBottom>
-        Timeline
-      </Typography>
-      <Typography variant="body1" color="text.secondary">
-        Timeline viewer will be implemented in Phase 2
-      </Typography>
-    </Box>
-  );
+  return <TimelineContainer />;
 }
 
 function SearchPage() {

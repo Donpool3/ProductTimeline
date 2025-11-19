@@ -9,6 +9,7 @@ import { HealthModule } from './health/health.module';
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { RateLimitInterceptor } from './common/interceptors/rate-limit.interceptor';
+import { MockDataService } from './services/mock-data.service';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { RateLimitInterceptor } from './common/interceptors/rate-limit.intercept
   controllers: [AppController],
   providers: [
     AppService,
+    MockDataService,
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
@@ -36,5 +38,6 @@ import { RateLimitInterceptor } from './common/interceptors/rate-limit.intercept
       useClass: RateLimitInterceptor,
     },
   ],
+  exports: [MockDataService],
 })
 export class AppModule {}
