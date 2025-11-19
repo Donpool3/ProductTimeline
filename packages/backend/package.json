@@ -12,7 +12,14 @@
     "test:cov": "jest --coverage",
     "lint": "eslint \"{src,test}/**/*.ts\"",
     "lint:fix": "eslint \"{src,test}/**/*.ts\" --fix",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "seed": "tsx src/database/seeds/seed.command.ts seed",
+    "seed:clear": "tsx src/database/seeds/seed.command.ts clear",
+    "seed:reset": "tsx src/database/seeds/seed.command.ts reset",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:generate": "npm run typeorm -- migration:generate -d src/database/database.config.ts",
+    "migration:run": "npm run typeorm -- migration:run -d src/database/database.config.ts",
+    "migration:revert": "npm run typeorm -- migration:revert -d src/database/database.config.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.3.0",
